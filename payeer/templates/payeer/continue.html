@@ -1,0 +1,17 @@
+
+{% load i18n %}
+
+    <p>
+        {% trans 'Платежная система' %}: {{ transaction.get_ps_display }}<br/>
+        {% trans 'Сумма' %}: ${{ transaction.amount }}<br/>
+    </p>
+
+    <form action="https://payeer.com/merchant/" method="get">
+        <input type="hidden" name="m_shop" value="{{ settings.PAYEER_SHOP_ID }}">
+        <input type="hidden" name="m_orderid" value="{{ transaction.pk }}">
+        <input type="hidden" name="m_amount" value="{{ transaction.amount }}">
+        <input type="hidden" name="m_curr" value="USD">
+        <input type="hidden" name="m_desc" value="{{ description }}">
+        <input type="hidden" name="m_sign" value="{{ sign }}">
+        <button type="submit">{% trans 'Продолжить' %}</button>
+    </form>
