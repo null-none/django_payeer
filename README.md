@@ -1,5 +1,5 @@
 # django_payeer
-Payeer integrate in django
+Integrate payment system payeer in django
 
 ```
 settings.py
